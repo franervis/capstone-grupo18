@@ -1,0 +1,12 @@
+﻿parametro,valor
+horizonte,7
+capacidad_banco,1000
+shelf_life,5
+lead_time,1
+costo_km,645
+costo_holding_banco,450
+costo_holding_hospital,680
+costo_wastage,1400
+costo_shortage,2300
+inventario_inicial_hospital_factor,0.1
+inventario_inicial_banco_factor,0.1

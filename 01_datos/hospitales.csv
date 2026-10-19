@@ -1,0 +1,24 @@
+﻿nombre,lat,lon,tipo,tamano,capacidad_maxima
+Centro Metropolitano de Sangre,-33.43,-70.62,Banco,Banco,1000
+Hospital San JosÃ©,-33.4059,-70.6544,Hospital,Grande,120
+Hospital Roberto del RÃ­o,-33.4101,-70.6505,Hospital,Grande,120
+Instituto Nacional del CÃ¡ncer,-33.4132,-70.6528,Hospital,Mediano,80
+Hospital San Juan de Dios,-33.4385,-70.6835,Hospital,Grande,120
+Instituto TraumatolÃ³gico,-33.4348,-70.6564,Hospital,Mediano,80
+Hospital FÃ©lix Bulnes,-33.421,-70.7356,Hospital,Grande,120
+Hospital San Borja ArriarÃ¡n,-33.4547,-70.6488,Hospital,Grande,120
+Ex Posta Central,-33.4483,-70.6416,Hospital,Grande,120
+Hospital del Salvador,-33.4304,-70.6181,Hospital,Grande,120
+Hospital Luis TisnÃ©,-33.4977,-70.5705,Hospital,Mediano,80
+Hospital Calvo Mackenna,-33.4345,-70.6152,Hospital,Grande,120
+Instituto NeurocirugÃ­a,-33.4322,-70.6173,Hospital,PequeÃ±o,40
+Instituto GeriatrÃ­a,-33.4337,-70.6189,Hospital,PequeÃ±o,40
+Hospital Barros Luco,-33.495,-70.6513,Hospital,Grande,120
+Hospital Exequiel GonzÃ¡lez CortÃ©s,-33.4979,-70.6508,Hospital,Grande,120
+Hospital Lucio CÃ³rdova,-33.4952,-70.6515,Hospital,PequeÃ±o,40
+Hospital El Pino,-33.6207,-70.699,Hospital,Grande,120
+Hospital Parroquial San Bernardo,-33.5924,-70.6992,Hospital,Mediano,80
+Hospital SÃ³tero del RÃ­o,-33.6087,-70.5754,Hospital,Grande,120
+Hospital Padre Hurtado,-33.5472,-70.645,Hospital,Grande,120
+Hospital San JosÃ© de Maipo,-33.6398,-70.3537,Hospital,PequeÃ±o,40
+Instituto PsiquiÃ¡trico,-33.4094,-70.6518,Hospital,Mediano,80

@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Entornos virtuales
+venv/
+.venv/
+env/
+
+# Sistema operativo
+.DS_Store
+
+# Licencia de Gurobi (no se sube)
+gurobi.lic
+
+# Salidas de las corridas
+resultados/*
+!resultados/.gitkeep
