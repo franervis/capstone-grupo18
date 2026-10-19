@@ -1,5 +1,4 @@
-"""Caso base OFICIAL del SIRP: política agnóstica a la demanda y a la oferta
-(METODOLOGIA.md §15).
+"""Caso base OFICIAL del SIRP: política agnóstica a la demanda y a la oferta.
 
 Sus reglas usan solo la estructura del problema: distancias, capacidades de
 hospitales, camiones y banco, y vida útil. Ninguna regla usa demanda ni oferta

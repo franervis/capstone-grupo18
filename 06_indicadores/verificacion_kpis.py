@@ -1,4 +1,4 @@
-"""Verificación de los KPIs (METODOLOGIA.md §14).
+"""Verificación de los KPIs.
 
 Se corre desde la raíz del repo con:
 

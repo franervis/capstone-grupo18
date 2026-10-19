@@ -1,4 +1,4 @@
-"""Desigualdades (l,S) de planificación de producción (`resultados_generacion_columnas.md` §6.3),
+"""Desigualdades (l,S) de planificación de producción,
 probadas en las 4 instancias chicas.
 
 Para cada hospital i, escenario s, día l y conjunto de días S ⊆ {0..l}:

@@ -1,4 +1,4 @@
-"""Desigualdades (l,S) como cortes (`resultados_generacion_columnas.md` §6.3).
+"""Desigualdades (l,S) como cortes.
 
 Para cada hospital i, escenario s, día l y conjunto de días S ⊆ {0..l}:
     Σ_{t∈S} llega[i,t,s] ≤ Σ_{t∈S} D[i,t..l,s] · Y[i,t] + inventario al cierre de l + vencidas antes de l

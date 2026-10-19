@@ -1,9 +1,9 @@
-"""Heurística C: ventana más corta en el modelo de cantidades (METODOLOGIA.md §6).
+"""Heurística C: ventana más corta en el modelo de cantidades.
 
-La C se descartó como heurística (METODOLOGIA.md §6); el código queda como registro reproducible.
+La C se descartó como heurística; el código queda como registro reproducible.
 
-Intento 2: heurística de cantidades (como la define METODOLOGIA).
-- Como dice METODOLOGIA §6, el calendario se fija el lunes y lo que se acorta
+Intento 2: heurística de cantidades (la propuesta original de la C).
+- Según la propuesta de la C, el calendario se fija el lunes y lo que se acorta
   es la ventana del modelo de cantidades. El calendario viene de otra
   heurística; se usa el de la B (`heuristica_b.resolver_modelo_calendario`).
 - Cantidades (cada día): el modelo de cantidades del modelo común, pero sólo
@@ -21,8 +21,7 @@ Intento 1 (descartado): heurística independiente.
   sus días. Cada bloque parte, en cada escenario s, del inventario que el
   bloque anterior dejó al cierre en ese mismo escenario. Al final los bloques
   se juntan en un solo calendario, que queda fijo toda la semana.
-- Se descartó porque los bloques no convergen en tiempos razonables
-  (resultados en resultados/README.md): el ruteo completo sigue siendo
+- Se descartó porque los bloques no convergen en tiempos razonables: el ruteo completo sigue siendo
   difícil aunque se acorten los días. Se deja en el código para poder
   reproducirlo.
 
@@ -96,7 +95,7 @@ def _inventario_siguiente(modelo, escenarios, insumos):
 
 
 def _resolver_bloque(escenarios, estado, insumos, inicio_por_escenario):
-    """Modelo de calendario del modelo común (§10.2–10.4) sobre los días de un bloque.
+    """Modelo de calendario del modelo común sobre los días de un bloque.
 
     Recibe:
         escenarios: Escenarios de los días del bloque.
@@ -219,7 +218,7 @@ def resolver_calendario_bloques(escenarios, estado_inicial, insumos, bloques):
 
 
 def resolver_cantidades_ventana(escenarios, estado, calendario, insumos, ventana):
-    """Modelo de cantidades del modelo común (§10.5) sobre hoy y los días
+    """Modelo de cantidades del modelo común sobre hoy y los días
     siguientes, hasta completar `ventana` días o llegar al domingo. El mínimo
     terminal se exige al cierre de la ventana.
 

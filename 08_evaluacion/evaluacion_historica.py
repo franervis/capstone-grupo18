@@ -1,5 +1,5 @@
 """Prueba con las semanas reales de 2024, intervalos de confianza y escenarios
-favorables, neutros y desfavorables (METODOLOGIA.md §15.4 y Anexo 15.A.4).
+favorables, neutros y desfavorables.
 
 1. **Política agnóstica a los datos de prueba.** Las distribuciones de demanda
    y oferta se ajustan sólo con los datos anteriores a
@@ -101,7 +101,7 @@ def semanas_historicas(insumos, desde=cfg.INICIO_PRUEBA_HISTORICA, hasta=None):
 
 
 # ---------------------------------------------------------------------------
-# Escenarios construidos: favorable, neutro y desfavorable (§15.4)
+# Escenarios construidos: favorable, neutro y desfavorable
 # ---------------------------------------------------------------------------
 
 
@@ -130,7 +130,7 @@ def escenario_construido(semanas, nombre, semilla=cfg.SEMILLA_ESCENARIOS):
 
 
 # ---------------------------------------------------------------------------
-# Semanas favorables, neutras y desfavorables por holgura (§15.A.4), e intervalos
+# Semanas favorables, neutras y desfavorables por holgura, e intervalos
 # ---------------------------------------------------------------------------
 
 

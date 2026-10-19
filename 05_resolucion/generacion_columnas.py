@@ -1,6 +1,6 @@
 """Modelo de calendario por generación de columnas (EN DESARROLLO).
 
-Diseño: `feedback_presentacion/plan_generacion_columnas.md`. Reformula el modelo
+Reformula el modelo
 de calendario del modelo común: en vez de armar las rutas arco por arco, el
 maestro elige entre RUTAS completas, cada una con su costo de transporte ya
 calculado. No modifica ningún otro archivo del proyecto.
@@ -122,7 +122,7 @@ from codigo.modelo_comun import SolucionCalendario
 
 
 def resolver_maestro(escenarios, estado_inicial, insumos, rutas, relajado=False):
-    """Modelo de calendario por rutas (plan §5), con las rutas dadas.
+    """Modelo de calendario por rutas, con las rutas dadas.
 
     Variables nuevas: lambda[r, t] = cuántos vehículos hacen la ruta r el día t,
     y q[i, r, a, t, s] = lo que la ruta r lleva al hospital i. Todo el
@@ -134,7 +134,7 @@ def resolver_maestro(escenarios, estado_inicial, insumos, rutas, relajado=False)
     - flota: Σ_r lambda[r, t] ≤ número de vehículos, cada día;
     - capacidad de cada ruta: lo que lleva ≤ θ · lambda[r, t], en cada escenario.
 
-    Supone (plan §6): vehículos idénticos (G2), costo de ruta fijo (G1).
+    Supone: vehículos idénticos (G2), costo de ruta fijo (G1).
 
     Recibe:
         escenarios, estado_inicial, insumos: como en modelo_comun.
@@ -248,7 +248,7 @@ def _beneficios_por_unidad(modelo, rutas, n_dias, n_escenarios, edades):
 
 
 def subproblema(modelo, rutas, tabla, theta, n_dias, n_escenarios, edades, maximo_por_dia):
-    """Busca rutas nuevas con costo reducido negativo (plan §4, paso 3).
+    """Busca rutas nuevas con costo reducido negativo.
 
     Costo reducido de la ruta S el día t:
         c_S − μ_t + Σ_s θ · min(0, min_{i ∈ S} beneficio[i, t, s]),
@@ -280,7 +280,7 @@ def subproblema(modelo, rutas, tabla, theta, n_dias, n_escenarios, edades, maxim
 
 def generar_columnas(escenarios, estado_inicial, insumos, hospitales=None, maximo_por_dia=5,
                      maximo_iteraciones=200, registro=None):
-    """Ciclo de generación de columnas sobre el maestro continuo (plan §4, pasos 1 a 4).
+    """Ciclo de generación de columnas sobre el maestro continuo.
 
     Parte con las rutas de un solo hospital y agrega en cada iteración las
     rutas con costo reducido negativo, hasta que no quede ninguna.
@@ -314,7 +314,7 @@ def generar_columnas(escenarios, estado_inicial, insumos, hospitales=None, maxim
 
 def resolver_modelo_calendario(escenarios, estado_inicial, insumos, maximo_por_dia=5):
     """Modelo de calendario por generación de columnas, con la misma firma que
-    `modelo_comun.resolver_modelo_calendario` (plan §4, pasos 1 a 6).
+    `modelo_comun.resolver_modelo_calendario`.
 
     1. Generación de columnas sobre el maestro continuo (rutas útiles + cota).
     2. Maestro ENTERO con las rutas generadas (price-and-branch, paso 5).

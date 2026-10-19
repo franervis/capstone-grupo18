@@ -12,7 +12,7 @@ Paso 2 — Ruteo: con las visitas fijas, para cada vehículo y día se busca el
     óptimo con Gurobi).
 
 El costo de la heurística es justamente que el paso 1 decide sin saber nada
-del ruteo (METODOLOGIA.md §6).
+del ruteo.
 
 Uso (misma firma que el modelo común):
 

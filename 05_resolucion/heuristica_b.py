@@ -1,4 +1,4 @@
-"""Heurística B: partición geográfica por vehículo (METODOLOGIA.md §6).
+"""Heurística B: partición geográfica por vehículo.
 
 A cada vehículo se le asigna un subconjunto fijo de hospitales (su zona) y
 sólo puede visitar esos. Sólo cambia el modelo de calendario; el modelo de
@@ -254,7 +254,7 @@ def describir_zonas(zonas, insumos):
 
 
 def resolver_calendario_zonas(escenarios, estado_inicial, insumos, zonas):
-    """Modelo de calendario del modelo común (§10.2–10.4) en que cada vehículo
+    """Modelo de calendario del modelo común en que cada vehículo
     k sólo visita los hospitales de su zona.
 
     Recibe: lo mismo que `modelo_comun.resolver_modelo_calendario`, más

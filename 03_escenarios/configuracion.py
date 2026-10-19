@@ -64,7 +64,7 @@ OFERTA_MINIMA = 0
 # de cada distribución se estiman desde la serie histórica en
 # distribuciones.py; acá sólo va la familia.
 # Supuesto: estos ajustes son correctos. Su validación formal (KS, AD, χ²)
-# está pendiente (PENDIENTES.md).
+# está en 02_analisis_datos/analisis_demanda.
 # Si se cambia: se debe usar uno de "binomial_negativa", "binomial" o "poisson".
 TIPO_DISTRIBUCION_DEMANDA = {
     "Instituto Traumatológico": "binomial_negativa",
@@ -117,7 +117,7 @@ N_ESCENARIOS_DEFAULT = 30
 
 # Día de la semana en que parte el ciclo semanal (0 = lunes, convención de
 # Python). Toda la semana usa el mes de este día para la oferta (decisión
-# del grupo, ver METODOLOGIA.md).
+# del grupo).
 DIA_INICIO_SEMANA = 0
 
 # Semilla del generador aleatorio. None = no reproducible. Fijar un entero
@@ -128,39 +128,39 @@ DIA_INICIO_SEMANA = 0
 SEMILLA = None
 
 # ---------------------------------------------------------------------------
-# Variantes exploradas del caso base (codigo/caso_base.py, METODOLOGIA.md Anexo 15.A)
+# Variantes exploradas del caso base (codigo/caso_base.py)
 # ---------------------------------------------------------------------------
 
 # Cuantil de la demanda diaria con que se fija el nivel objetivo de cada
-# hospital: η_i = min(cuantil de su demanda diaria, C_i) (§15.A.1).
+# hospital: η_i = min(cuantil de su demanda diaria, C_i).
 # Caso base principal: 0.95 (P95), con sensibilidad a 0.90 y 0.99 (decisión
-# de José Ignacio del 2026-10-06, por aprobar con el grupo; §15.A.5).
+# de José Ignacio del 2026-10-06, por aprobar con el grupo).
 # "critico" = fractil crítico con los costos de
 # datos/parametros.csv, π / (π + γ) = 2300 / 2980 ≈ 0.77.
 # Si se cambia: un cuantil mayor lleva más unidades (menos faltantes, más holding).
 CUANTIL_CASO_BASE = 0.95
 
-# De dónde sale el percentil del nivel objetivo (§15.A.5).
+# De dónde sale el percentil del nivel objetivo.
 #   "historico": el percentil directo de la demanda diaria histórica de cada
 #       hospital (como PERCENTIL.INCLUIR en Excel), redondeado hacia arriba. No
 #       usa las distribuciones ajustadas: el caso base queda independiente del
 #       modelamiento de la metodología. Es la del caso base principal.
 #   "distribucion": el percentil de la distribución ajustada de cada hospital
-#       (Tabla A.3), como en la propuesta original de la §15.A.1.
+#       (Tabla A.3), como en la propuesta original.
 # Si se cambia: los niveles cambian a lo más en 1 o 2 unidades por hospital.
 FUENTE_NIVEL_CASO_BASE = "historico"
 
-# Cuánta oferta admite el banco cada día (§15.A.1).
+# Cuánta oferta admite el banco cada día.
 #   "ajustada": sólo lo que se despacha hoy más μ_b (el mínimo terminal del
 #       banco, 10% de su capacidad), sin pasar su capacidad. Es la del caso
-#       base principal (§15.A.5).
-#   "todo": toda la que quepa en el banco (propuesta original de la §15.A.1;
-#       descartada porque llena el banco sin atender más demanda, §15.A.2).
+#       base principal.
+#   "todo": toda la que quepa en el banco (propuesta original;
+#       descartada porque llena el banco sin atender más demanda).
 # Si se cambia: "ajustada" deja menos unidades pasando la noche en el banco.
 ADMISION_CASO_BASE = "ajustada"
 
-# Variantes que corre `python -m codigo.caso_base` para la sensibilidad
-# (§15.A.1): cada par es (cuantil, admisión). Los resultados quedan en
+# Variantes que corre `python -m codigo.caso_base` para la sensibilidad:
+# cada par es (cuantil, admisión). Los resultados quedan en
 # resultados/caso_base_semanas_2024_5xmes.csv, una fila por variante y semana.
 VARIANTES_CASO_BASE = [
     (cuantil, admision)
@@ -168,15 +168,15 @@ VARIANTES_CASO_BASE = [
     for cuantil in (0.90, 0.95, 0.99, "critico")
 ]
 
-# Las variantes que se reportan como caso base (§15.A.5): el principal (P95 con
+# Las variantes que se reportan como caso base: el principal (P95 con
 # admisión ajustada) y su sensibilidad al percentil. Las demás de
-# VARIANTES_CASO_BASE y la variante con escenarios (§15.A.3) se siguen corriendo
+# VARIANTES_CASO_BASE y la variante con escenarios se siguen corriendo
 # como registro de lo explorado, pero no son el caso base.
 VARIANTE_PRINCIPAL_CASO_BASE = (0.95, "ajustada")
 VARIANTES_OFICIALES_CASO_BASE = [(0.90, "ajustada"), (0.95, "ajustada"), (0.99, "ajustada")]
 
 # ---------------------------------------------------------------------------
-# Caso base OFICIAL: agnóstico (codigo/caso_base_agnostico.py, METODOLOGIA.md §15)
+# Caso base OFICIAL: agnóstico (codigo/caso_base_agnostico.py)
 # ---------------------------------------------------------------------------
 # Las variantes de arriba (CUANTIL_CASO_BASE, ADMISION_CASO_BASE, etc.) quedan
 # como registro de lo explorado; el caso base que se reporta es el agnóstico.
@@ -190,7 +190,7 @@ BETA_CASO_BASE = None
 # Valores de β para la sensibilidad (None = el principal).
 BETAS_SENSIBILIDAD_CASO_BASE = [0.25, None, 0.35]
 
-# Escenarios construidos sobre las 52 semanas reales de 2024 (§15.4): la
+# Escenarios construidos sobre las 52 semanas reales de 2024: la
 # demanda y la oferta reales se multiplican por estos factores. "ruido" agrega
 # un factor al azar en [1 − ruido, 1 + ruido], distinto cada día y hospital.
 # Si se cambia: los escenarios quedan más (o menos) extremos.
@@ -204,7 +204,7 @@ ESCENARIOS_CONSTRUIDOS = {
 SEMILLA_ESCENARIOS = 2024
 
 # ---------------------------------------------------------------------------
-# Prueba con las semanas reales (codigo/evaluacion_historica.py, §15.4)
+# Prueba con las semanas reales (codigo/evaluacion_historica.py)
 # ---------------------------------------------------------------------------
 
 # Corte entre los datos con que se construye la política y los datos con que
@@ -219,7 +219,7 @@ INICIO_PRUEBA_HISTORICA = "2024-01-01"
 CONFIANZA_INTERVALOS = 0.95
 
 # ---------------------------------------------------------------------------
-# Heurística C (codigo/heuristica_c.py, METODOLOGIA.md §6)
+# Heurística C (codigo/heuristica_c.py)
 # ---------------------------------------------------------------------------
 
 # Largo (en días) de cada bloque en que se resuelve el calendario el lunes
@@ -227,14 +227,14 @@ CONFIANZA_INTERVALOS = 0.95
 # (4, 3) = primero lunes a jueves y después viernes a domingo. Cada bloque
 # parte, en cada escenario, del inventario que dejó el anterior. Deben sumar
 # el horizonte (7). Fuente: interpretación nuestra del "4+3" de
-# METODOLOGIA.md §6, que en realidad se refiere a las cantidades.
+# la propuesta de la heurística C, que en realidad se refiere a las cantidades.
 # Si se cambia: bloques más cortos son más rápidos de resolver, pero cada uno
 # ve menos días hacia adelante. Con (7,) el calendario es el del modelo común.
 BLOQUES_CALENDARIO_C = (4, 3)
 
 # Días que ve cada mañana el modelo de cantidades: hoy y los siguientes, sin
 # pasar del domingo. El mínimo terminal se exige al cierre de la ventana.
-# Fuente: METODOLOGIA.md §6 ("ventanas de 3 días").
+# Fuente: propuesta de la heurística C ("ventanas de 3 días").
 # Si se cambia: con 7 o más, el modelo de cantidades es el del modelo común.
 VENTANA_CANTIDADES_C = 3
 
@@ -244,14 +244,14 @@ VENTANA_CANTIDADES_C = 3
 
 # Tiempo máximo (segundos) por resolución de cada modelo. Si se alcanza, se
 # usa la mejor solución encontrada hasta ese momento.
-# Valores PROVISORIOS, elegidos sin criterio formal (ver PENDIENTES.md).
+# Valores PROVISORIOS, elegidos sin criterio formal.
 # Si se cambia: más tiempo da soluciones mejores o probadamente óptimas, pero
 # la simulación tarda más (el modelo de cantidades se resuelve 7 veces por semana).
 TIEMPO_LIMITE_CALENDARIO_S = 3600
 TIEMPO_LIMITE_CANTIDADES_S = 600
 
 # Gap de optimalidad relativo con que Gurobi se detiene (0.01 = 1%).
-# Valor PROVISORIO (ver PENDIENTES.md). Si se cambia: menor gap = solución más
+# Valor PROVISORIO. Si se cambia: menor gap = solución más
 # cercana al óptimo, pero más tiempo.
 GAP_MIP = 0.01
 

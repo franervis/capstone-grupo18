@@ -1,10 +1,10 @@
 """Modelo común del SIRP: modelo de calendario y modelo de cantidades.
 
-Implementa la formulación de la §10 de METODOLOGIA.md, sin heurísticas ni
+Implementa la formulación completa del modelo, sin heurísticas ni
 simplificaciones. Las heurísticas se construyen sobre este archivo.
 
 NOMENCLATURA: los nombres del código son los mismos símbolos de la
-formulación (tabla completa en METODOLOGIA.md §10.1). Cada símbolo es único.
+formulación. Cada símbolo es único.
 
     Índices:     i, j hospital (0..21) · b banco · k vehículo · t día (0 = lunes)
                  a edad (0..L-1) · s escenario
@@ -104,7 +104,7 @@ class DecisionesDia:
 
 
 def inventario_inicial(insumos):
-    """φ: inventario con que parte la semana (supuesto vigente, PENDIENTES.md).
+    """φ: inventario con que parte la semana (supuesto vigente).
 
     El 10% de la capacidad de cada lugar (`inventario_inicial_*_factor`),
     redondeado hacia arriba, todo con edad 0.
@@ -123,7 +123,7 @@ def inventario_inicial(insumos):
 
 
 def minimos_terminales(insumos):
-    """μ: mínimo de inventario al cierre del domingo (§7 de METODOLOGIA.md).
+    """μ: mínimo de inventario al cierre del domingo.
 
     Devuelve: (mu_b, arreglo mu_i por hospital). Pueden ser fraccionarios.
     """
@@ -180,12 +180,12 @@ def _es_cero(valor):
 
 
 # ---------------------------------------------------------------------------
-# Dinámica de inventario (§10.4, común a ambos modelos)
+# Dinámica de inventario (común a ambos modelos)
 # ---------------------------------------------------------------------------
 
 
 def _agregar_inventario(modelo, escenarios, estado, insumos, visita, hoy_comun, inicio_por_escenario=None):
-    """Agrega las variables y restricciones de inventario (§10.4) y devuelve
+    """Agrega las variables y restricciones de inventario y devuelve
     el costo esperado de inventario (holding + shortage + wastage +
     penalización terminal).
 
@@ -318,7 +318,7 @@ def _agregar_inventario(modelo, escenarios, estado, insumos, visita, hoy_comun, 
 
 
 def resolver_modelo_calendario(escenarios, estado_inicial, insumos):
-    """Modelo de calendario (§10.2–10.4): decide qué hospitales visita cada
+    """Modelo de calendario: decide qué hospitales visita cada
     vehículo cada día y en qué orden, junto con las cantidades por escenario.
     Sólo el calendario se usa después.
 
@@ -395,7 +395,7 @@ def resolver_modelo_calendario(escenarios, estado_inicial, insumos):
 
 
 def resolver_modelo_cantidades(escenarios, estado, calendario, insumos):
-    """Modelo de cantidades (§10.5): con el calendario fijo, decide cuánta
+    """Modelo de cantidades: con el calendario fijo, decide cuánta
     oferta admitir y cuánto despachar desde hoy hasta el domingo. Sólo se
     devuelven las decisiones de hoy, que son iguales en todos los escenarios.
 

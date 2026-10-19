@@ -1,6 +1,6 @@
 """Simulación de evaluación: corre la política sobre semanas "reales" simuladas.
 
-Una semana simulada funciona así (ver METODOLOGIA.md, §11):
+Una semana simulada funciona así:
 0. Antes del lunes se sortea la "realidad" de los 7 días (oferta y demanda)
    y se guarda. El modelo no la ve.
 1. Se corre `ejecutar_semana`, que revela la realidad un día a la vez: la
@@ -13,9 +13,8 @@ de cada hospital para la demanda), pero con un generador aleatorio distinto,
 así que son independientes de los escenarios del modelo. Para comparar
 políticas, todas deben correr sobre las mismas semanas reales.
 
-Los KPIs (`codigo/kpis.py`, METODOLOGIA.md §14) se agregan al resumen de
-cada semana en `simular_semana`. El caso base NO está aquí todavía
-(PENDIENTES.md).
+Los KPIs (`codigo/kpis.py`) se agregan al resumen de
+cada semana en `simular_semana`. El caso base NO está aquí todavía.
 """
 
 from dataclasses import dataclass
@@ -57,7 +56,7 @@ def generadores(semilla=cfg.SEMILLA):
 def generar_semanas_reales(fecha_lunes, n_semanas, insumos, rng):
     """Sortea `n_semanas` semanas "reales" independientes que parten en `fecha_lunes`.
 
-    Supuesto vigente (PENDIENTES.md): los 7 días usan el mes del lunes.
+    Supuesto vigente: los 7 días usan el mes del lunes.
 
     Recibe: fecha_lunes, n_semanas (int), insumos, rng (numpy Generator).
     Devuelve: lista de SemanaReal.
@@ -149,7 +148,7 @@ def simular_semana(semana, insumos, n_escenarios=cfg.N_ESCENARIOS_DEFAULT, rng=N
         "cantidades_optimas": all(r["decisiones"].info_resolucion.get("optimo", True) for r in registros),
     }
 
-    # KPIs (METODOLOGIA.md §14): KPIs de la red y demanda/faltante por hospital.
+    # KPIs de la red y demanda/faltante por hospital.
     resumen.update(kpis.kpis_semana(semana, calendario, registros, insumos, inicial))
     resumen.update(kpis.detalle_hospitales(semana, registros))
     return resumen, calendario, registros

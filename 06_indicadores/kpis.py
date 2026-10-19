@@ -1,4 +1,4 @@
-"""Indicadores de desempeño (KPIs) de una política (METODOLOGIA.md §14).
+"""Indicadores de desempeño (KPIs) de una política.
 
 Los KPIs se calculan con lo que realmente pasó en cada semana simulada, no con
 lo que planificó el modelo. Todo sale de lo que devuelve
@@ -57,7 +57,7 @@ def _dividir(numerador, denominador):
 
 
 def kpis_semana(semana, calendario, registros, insumos, estado_inicial=None):
-    """KPIs de la red para una semana simulada (METODOLOGIA.md §14.3–14.6).
+    """KPIs de la red para una semana simulada.
 
     Recibe: lo que usa y devuelve `simulacion.simular_semana`:
         semana (SemanaReal), calendario (SolucionCalendario), registros (lista
@@ -157,11 +157,11 @@ def detalle_hospitales(semana, registros):
 
 
 def kpis_hospitales(tabla, insumos):
-    """Fill rate de cada hospital sobre un conjunto de semanas (METODOLOGIA.md §14.7).
+    """Fill rate de cada hospital sobre un conjunto de semanas.
 
     Se calcula con los totales del conjunto (faltantes totales sobre demanda
     total), no como promedio de los fill rate semanales. Supuesto vigente, por
-    revisar (PENDIENTES.md).
+    revisar.
 
     Recibe: tabla = DataFrame con una fila por semana y las columnas de
         `detalle_hospitales`; insumos.
@@ -227,7 +227,7 @@ def _estadisticos(tabla, columnas):
 
 
 def resumir_semanas(tabla, columnas=None):
-    """Resume los KPIs entre semanas, por mes y para el año (METODOLOGIA.md §14.8).
+    """Resume los KPIs entre semanas, por mes y para el año.
 
     Recibe: tabla = DataFrame con una fila por semana, la columna
         "fecha_lunes" y las columnas de `kpis_semana`; columnas = KPIs a
@@ -237,7 +237,7 @@ def resumir_semanas(tabla, columnas=None):
         (1–12) o "año", con las columnas promedio, desviacion, p5, p95 y
         semanas. Los estadísticos son sobre los valores semanales.
     Supone: todos los meses tienen el mismo número de semanas; así el año
-        pondera los meses por igual (METODOLOGIA.md §13). Si no, falla.
+        pondera los meses por igual. Si no, falla.
     """
     if columnas is None:
         tabla, columnas = completar_tabla(tabla)

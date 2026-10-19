@@ -1,6 +1,6 @@
 """Comparación del caso base oficial con las heurísticas A y B en el AÑO
 SIMULADO ENCADENADO, el conjunto con que se comparan las políticas
-(decisión del grupo del 2026-10-07; METODOLOGIA.md §13 y §15.7).
+(decisión del grupo del 2026-10-07).
 
 No corre ningún modelo: usa los resultados de `correr_anio_simulado`. Verifica
 que las tres políticas vivieron las mismas 52 semanas con la misma demanda, y

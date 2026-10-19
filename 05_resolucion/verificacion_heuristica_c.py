@@ -1,4 +1,4 @@
-"""Verificación de la heurística C (codigo/heuristica_c.py, METODOLOGIA.md §6).
+"""Verificación de la heurística C (codigo/heuristica_c.py).
 
 Se corre desde la raíz del repo con:
 

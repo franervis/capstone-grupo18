@@ -1,4 +1,4 @@
-"""Verificación del caso base (METODOLOGIA.md §15.A.2 y Anexo 15.A).
+"""Verificación del caso base.
 
 Las primeras 5 pruebas son del caso base OFICIAL (agnóstico); el resto, de
 las variantes exploradas antes (registro).
@@ -11,8 +11,8 @@ Imprime OK / FALLA para cada prueba y termina con código de salida 1 si
 alguna falla. No necesita licencia de Gurobi: el caso base no resuelve
 ningún modelo.
 
-Revisa que el caso base haga lo que dice la §15 y que las variantes del
-Anexo 15.A (incluido el modo con escenarios del 15.A.3) hagan lo suyo, y que, cada día de cada semana y en todas sus variantes, respete las mismas restricciones que el
+Revisa que el caso base haga lo que dice su definición y que las variantes
+exploradas (incluido el modo con escenarios) hagan lo suyo, y que, cada día de cada semana y en todas sus variantes, respete las mismas restricciones que el
 modelo: capacidad de hospitales, banco y vehículos, y despacho sólo a los
 hospitales del calendario.
 """
@@ -51,7 +51,7 @@ def _escenario_hoy(insumos, oferta):
 
 
 # ---------------------------------------------------------------------------
-# Variantes exploradas: reglas de la propuesta original (Anexo 15.A.1)
+# Variantes exploradas: reglas de la propuesta original
 # ---------------------------------------------------------------------------
 
 
@@ -168,7 +168,7 @@ def prueba_pedido_admision_fifo():
 
 
 # ---------------------------------------------------------------------------
-# Modo con escenarios (§15.A.3)
+# Modo con escenarios
 # ---------------------------------------------------------------------------
 
 
@@ -297,7 +297,7 @@ def prueba_resultados_guardados():
 
 
 # ---------------------------------------------------------------------------
-# Prueba con las semanas reales de 2024 (§15.A.4)
+# Prueba con las semanas reales de 2024
 # ---------------------------------------------------------------------------
 
 
@@ -382,7 +382,7 @@ def prueba_comparacion():
 
 
 # ---------------------------------------------------------------------------
-# Caso base OFICIAL: agnóstico (§15)
+# Caso base OFICIAL: agnóstico
 # ---------------------------------------------------------------------------
 
 

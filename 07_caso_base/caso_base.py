@@ -1,18 +1,18 @@
-"""Variantes EXPLORADAS del caso base (METODOLOGIA.md Anexo 15.A), y funciones
+"""Variantes EXPLORADAS del caso base, y funciones
 comunes que usa el caso base oficial (`caso_base_agnostico.py`): reglas simples, sin optimización.
 
 Es la política contra la que se compara la metodología: una forma intuitiva y
 miope de operar, sin escenarios y mirando sólo el día en curso. Se enchufa
-igual que una heurística (§11.7), así que corre sobre las mismas semanas, con
+igual que una heurística, así que corre sobre las mismas semanas, con
 la misma actualización del inventario y los mismos KPIs.
 
-Calendario (`resolver_modelo_calendario`, §15.A.1), el mismo todas las semanas:
+Calendario (`resolver_modelo_calendario`), el mismo todas las semanas:
     - 5 zonas fijas, una por vehículo: barrido angular alrededor del banco,
       cortado en grupos consecutivos con la demanda media lo más pareja posible.
     - Cada vehículo visita todos los días todos los hospitales de su zona.
     - Orden de la ruta: vecino más cercano, sin optimizar.
 
-Cantidades (`resolver_modelo_cantidades`, §15.A.1), sólo con lo que se sabe hoy:
+Cantidades (`resolver_modelo_cantidades`), sólo con lo que se sabe hoy:
     - Admisión: toda la oferta que quepa en el banco (CFG "todo") o sólo lo que
       se despacha hoy más μ_b ("ajustada").
     - Pedido de cada hospital: max(0, η_i − inventario), con
@@ -29,7 +29,7 @@ Sin argumentos, `politica()` usa CUANTIL_CASO_BASE y ADMISION_CASO_BASE de
 configuracion.py. Los escenarios que genera `ejecutar_semana` no se usan, así
 que basta n_escenarios=1.
 
-Modo con escenarios (`politica_escenarios`, §15.A.3): las mismas zonas, pero
+Modo con escenarios (`politica_escenarios`): las mismas zonas, pero
 cada día decide con los 30 escenarios que reciben las heurísticas, sin
 optimizar: prueba niveles y colchones y elige el de menor costo promedio, y si
 no alcanza reparte unidad por unidad donde es más probable que se use.
@@ -51,7 +51,7 @@ from codigo.modelo_comun import DecisionesDia, SolucionCalendario
 
 ARCHIVO_SEMANAS = "01_datos/semanas_simuladas_2024_5xmes.csv"
 ARCHIVO_RESULTADOS = "resultados/caso_base_semanas_2024_5xmes.csv"
-SEMILLA_RESULTADOS = 2024  # la misma de la heurística A (resultados/README.md)
+SEMILLA_RESULTADOS = 2024  # la misma de la heurística A
 
 
 # ---------------------------------------------------------------------------
@@ -77,7 +77,7 @@ def _demanda_historica(insumos):
 
 
 def niveles_objetivo(insumos, cuantil, fuente=None):
-    """η_i = min(cuantil de la demanda diaria del hospital i, C_i) (§15.A.1).
+    """η_i = min(cuantil de la demanda diaria del hospital i, C_i).
 
     Recibe: cuantil y fuente ("historico": percentil directo de la demanda
         histórica, redondeado hacia arriba; "distribucion": percentil de la
@@ -109,7 +109,7 @@ def demanda_media(insumos):
 
 
 def zonas(insumos):
-    """Las zonas fijas de los vehículos (§15.A.1).
+    """Las zonas fijas de los vehículos.
 
     Los hospitales se ordenan por su ángulo respecto al banco y se cortan en
     tantos grupos consecutivos como vehículos. Entre todos los puntos de partida
@@ -157,7 +157,7 @@ def zonas(insumos):
 
 
 def vecino_mas_cercano(hospitales, delta):
-    """Orden de visita por vecino más cercano desde el banco (§15.A.1).
+    """Orden de visita por vecino más cercano desde el banco.
 
     Recibe: hospitales i y la matriz δ de `modelo_comun.matriz_distancias`
         (banco en la posición 0, hospital i en la i + 1).
@@ -175,7 +175,7 @@ def vecino_mas_cercano(hospitales, delta):
 
 def recortar(pedidos, disponible):
     """Si los pedidos superan lo disponible, los recorta en proporción,
-    redondeando hacia abajo (§15.A.1). Si alcanza, los deja iguales."""
+    redondeando hacia abajo. Si alcanza, los deja iguales."""
     pedidos = np.asarray(pedidos, dtype=int)
     if pedidos.sum() <= disponible:
         return pedidos
@@ -210,7 +210,7 @@ def politica(cuantil=None, admision=None):
 
 
 def resolver_modelo_calendario(escenarios, estado_inicial, insumos):
-    """Calendario del caso base (§15.A.1): cada vehículo visita su zona todos
+    """Calendario del caso base: cada vehículo visita su zona todos
     los días. Misma firma que `modelo_comun.resolver_modelo_calendario`; no usa
     los escenarios ni el inventario.
 
@@ -231,7 +231,7 @@ def resolver_modelo_calendario(escenarios, estado_inicial, insumos):
 
 
 def resolver_modelo_cantidades(escenarios, estado, calendario, insumos, cuantil=None, admision=None):
-    """Decisiones de hoy del caso base (§15.A.1). Misma firma que
+    """Decisiones de hoy del caso base. Misma firma que
     `modelo_comun.resolver_modelo_cantidades`, más el cuantil y la regla de
     admisión (por defecto, los de configuracion.py). De los escenarios sólo se
     usa la oferta de hoy, que es la real.
@@ -284,7 +284,7 @@ def resolver_modelo_cantidades(escenarios, estado, calendario, insumos, cuantil=
 
 
 # ---------------------------------------------------------------------------
-# Modo con escenarios (§15.A.3)
+# Modo con escenarios
 # ---------------------------------------------------------------------------
 # Las mismas zonas y visitas diarias, pero las cantidades se deciden mirando
 # los escenarios que `ejecutar_semana` genera cada día (los mismos que reciben
@@ -351,7 +351,7 @@ def politica_escenarios():
 
 
 def resolver_cantidades_escenarios(escenarios, estado, calendario, insumos):
-    """Decisiones de hoy del caso base con escenarios (§15.A.3). Misma firma que
+    """Decisiones de hoy del caso base con escenarios. Misma firma que
     `modelo_comun.resolver_modelo_cantidades`.
 
     1. Nivel de cada hospital: el de menor costo promedio en la demanda de hoy de
@@ -415,7 +415,7 @@ def resolver_cantidades_escenarios(escenarios, estado, calendario, insumos):
 
 
 # ---------------------------------------------------------------------------
-# Sensibilidad sobre las 60 semanas (§15.A.1)
+# Sensibilidad sobre las 60 semanas
 # ---------------------------------------------------------------------------
 
 
@@ -443,7 +443,7 @@ def correr_variantes(insumos, semanas, variantes=None, semilla=SEMILLA_RESULTADO
 
 
 def correr_escenarios(insumos, semanas, semilla=SEMILLA_RESULTADOS, n_escenarios=None):
-    """Corre el caso base con escenarios (§15.A.3) sobre las semanas, con los
+    """Corre el caso base con escenarios sobre las semanas, con los
     mismos escenarios que recibirían las heurísticas (misma semilla y número).
 
     Devuelve: DataFrame con una fila por semana y variante "escenarios".
@@ -460,7 +460,7 @@ def correr_escenarios(insumos, semanas, semilla=SEMILLA_RESULTADOS, n_escenarios
 
 def resumen_anual(tabla):
     """Promedio por semana del año completo, ponderando los 12 meses por igual
-    (como en resultados/README.md), para cada variante."""
+    para cada variante."""
     columnas = ["costo_operacional", "costo_transporte", "costo_holding_banco", "costo_holding_hospitales",
                 "costo_shortage", "costo_wastage", "penalizacion_terminal", "costo_total", "km",
                 "unidades_faltantes", "unidades_vencidas", "deficit_terminal", "fill_rate_red"]

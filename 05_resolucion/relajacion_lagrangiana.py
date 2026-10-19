@@ -1,8 +1,7 @@
 """Cota inferior del modelo de calendario por relajación lagrangiana (EN DESARROLLO).
 
 Motivo: la estimación optimista (relajación lineal) del modelo común ignora el
-costo fijo de cada viaje ("pedazo de camión"; ver
-`feedback_presentacion/resultados_generacion_columnas.md` §4). En vez de soltar
+costo fijo de cada viaje ("pedazo de camión"). En vez de soltar
 las binarias, aquí se sueltan las restricciones que CONECTAN el problema y se
 les pone un precio; el problema se separa en pedazos chicos que se resuelven
 con sus binarias enteras, así que la estimación paga los viajes completos.

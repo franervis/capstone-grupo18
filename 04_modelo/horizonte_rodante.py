@@ -1,6 +1,6 @@
 """Orquestador del ciclo semanal con horizonte rodante.
 
-Dos modelos operan en momentos distintos (ver METODOLOGIA.md):
+Dos modelos operan en momentos distintos:
 
 1. Modelo de calendario: se resuelve UNA vez, el lunes, y fija qué hospitales
    visita cada vehículo cada día. Queda fijo los 7 días.
@@ -184,7 +184,7 @@ def ejecutar_semana(
         resolver_calendario, resolver_cantidades: funciones que resuelven cada
             modelo. Por defecto, las del modelo común. Una heurística entrega
             aquí sus propias funciones, con la misma firma y el mismo tipo de
-            resultado (ver METODOLOGIA.md §11.7).
+            resultado.
 
     Devuelve: (SolucionCalendario, lista de 7 registros diarios). Cada
         registro tiene la fecha, las decisiones y lo que pasó ese día (ver

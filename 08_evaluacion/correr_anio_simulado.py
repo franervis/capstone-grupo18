@@ -3,7 +3,7 @@ consecutivas de 2024 (lunes 1 de enero a domingo 29 de diciembre), donde cada
 lunes parte con el inventario real que dejó el domingo anterior, con sus edades.
 
 Es el conjunto con que se comparan las políticas (decisión del grupo,
-2026-10-07; ver `resultados/README.md`).
+2026-10-07).
 
 - Las semanas están en `01_datos/semanas_simuladas_consecutivas_2024.csv`.
   Se sortearon una vez con `simulacion.generar_semanas_reales` y la semilla

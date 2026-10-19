@@ -1,4 +1,4 @@
-"""Verificación del modelo común (METODOLOGIA.md §12).
+"""Verificación del modelo común.
 
 Se corre desde la raíz del repo con:
 
@@ -274,7 +274,7 @@ def prueba_capacidad_vehiculo():
 
 
 def prueba_fifo_real():
-    """La actualización real consume con FIFO, envejece y bota lo de edad 4 (ejemplo de METODOLOGIA §11.4)."""
+    """La actualización real consume con FIFO, envejece y bota lo de edad 4."""
     ins = _insumos_chicos(["Hospital San José"])
     est = _estado(ins, dia=1, banco={1: 30}, hospitales={(0, 3): 10, (0, 0): 20})
     dec = DecisionesDia(oferta_admitida=0, despachos={(0, 0, 1): 30})

@@ -1,7 +1,7 @@
 """Corre una política sobre las 52 semanas reales de 2024 ENCADENADAS: cada
 lunes parte con el inventario real que dejó el domingo anterior, con sus
-edades (METODOLOGIA.md §15.4), tal cual o en un escenario construido
-(favorable, neutro o desfavorable, §15.4).
+edades, tal cual o en un escenario construido
+(favorable, neutro o desfavorable).
 
 Todas las políticas usan lo mismo: distribuciones ajustadas solo con 2022–2023
 (`evaluacion_historica.preparar_insumos`), las 52 semanas reales de 2024, 30

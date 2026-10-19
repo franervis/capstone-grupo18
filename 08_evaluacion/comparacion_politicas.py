@@ -1,5 +1,4 @@
-"""Comparación del caso base con las heurísticas en las 60 semanas simuladas
-(METODOLOGIA.md §15.7).
+"""Comparación del caso base con las heurísticas en las 60 semanas simuladas.
 
 No corre ningún modelo: usa los resultados ya guardados en `resultados/`. Todas
 las políticas vivieron las mismas 60 semanas (misma oferta y demanda día a día),
@@ -35,7 +34,7 @@ HEURISTICAS = {
     "Heurística A": "resultados/heuristica_a_semanas_2024_5xmes.csv",
     "Heurística B (zonas compactas)": "resultados/heuristica_b_compacta_semanas_2024_5xmes.csv",
 }
-# El caso base oficial (agnóstico, §15) y su sensibilidad a β.
+# El caso base oficial (agnóstico) y su sensibilidad a β.
 CASOS_BASE = {
     "Caso base agnóstico β 28% (principal)": "agnostico_28",
     "Caso base agnóstico β 25%": "agnostico_25",

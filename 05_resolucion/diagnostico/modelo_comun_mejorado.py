@@ -1,8 +1,7 @@
 """Modelo de calendario del modelo común con mejoras exactas opcionales (EXPERIMENTAL).
 
-Responde al comentario del profesor (`feedback_presentacion/comentarios_presentacion.md`,
-punto 4): antes de usar heurísticas, intentar acelerar el modelo sin cambiar el
-problema. NO reemplaza a `codigo/modelo_comun.py`: construye el mismo modelo de
+Responde al comentario del profesor en la presentación del avance: antes de
+usar heurísticas, intentar acelerar el modelo sin cambiar el problema. NO reemplaza a `codigo/modelo_comun.py`: construye el mismo modelo de
 calendario (mismas variables, mismo inventario importado de `modelo_comun`) y le
 agrega, según las opciones, mejoras que no cambian el óptimo:
 
@@ -31,7 +30,7 @@ from codigo.modelo_comun import SolucionCalendario
 
 
 def topes_utiles(escenarios, insumos):
-    """Opción a (`resultados_generacion_columnas.md` §6): para cada hospital i,
+    """Opción a: para cada hospital i,
     día t y escenario s, lo máximo que le puede servir recibir ese día:
 
         U[i,t,s] = mín(θ, C_i, demanda de i en los días t .. t+L−1 del escenario s
